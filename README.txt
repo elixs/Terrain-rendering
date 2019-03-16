@@ -1,75 +1,75 @@
-La aplicación fue creada utiizando Visual Studio 2017, se adjunta el proyecto completo. Para los shader se utilizó OpenGL 3.3 core. Se adjunta igualmente un .exe para probar el programa sin necesidad de establecer dependencias.
+The application was created using Visual Studio 2017. For the shaders it's used OpengGL 3.3 core. There is a .exe to test the program without installing dependencies.
 
-Controles de la aplicación:
+Application controls:
 
-WASDQE		Moverse
-Mouse		Mover cámara
-Scroll		Zoom
-Shift		Mantener apretado para moverse más rápido
-R			Generar nuevo terreno
-H			Ocultar Info
-Esc			Menu
+WASDQE    Movement
+Mouse     Camera movement
+Scroll    Zoom
+Shift     Hold to move faster
+R         Generate new terrain
+H         Hide info
+Esc       Access/exit interactive menu
 
-Dentro del Menú se puede acceder a las tres demos incorporadas, saliendo de ellas con Esc. También se puede cambiar cada uno de los parámetros de manera independiente.
+On the menu there is three demos to test each one of the different light types.
 
-Sugerencias: Probar las tres demos y el ticket Live Motion del Menú
+Suggestions: Test the three demos and the Live Motion option on the menu.
 
-Las dependencias que se utilizan son GLFW para el manejo de ventanas, GLAD para cargar las funciones de OpenGL y GLM para funciones matemáticas. Se pueden encontrar buenos tutoriales de como incorporar estas bibliotecas a Visual Studio en https://learnopengl.com/Getting-started/Creating-a-window para las primeras dos y al final de https://learnopengl.com/Getting-started/Transformations para la tercera. De todas maneras se procederá a explicar los pasos generales para utilizar estas dependencias.
+The dependencies used are GLFW for window managment, GLAD to load OpenGL functions and GLM for mathematics. You can find good tutorials of how install this libraries into Visual Studio on https://learnopengl.com/Getting-started/Creating-a-window for the first two and https://learnopengl.com/Getting-started/Transformations for the last one. Either way here is a brief explanation of how to install this dependencies:
 
-* Requisitos:
+* Requirements:
 - Visual Studio 2017: https://visualstudio.microsoft.com/downloads/
 - CMake (Win64 Installer): https://cmake.org/download/
 - GLFW (Source package): http://www.glfw.org/download.html
-- Glad (Language: C/C++; Specification: Opengl; gl: >= 3.3; Profile: Core; Generate Loader: True): https://glad.dav1d.de/
+- GLAD (Language: C/C++; Specification: Opengl; gl: >= 3.3; Profile: Core; Generate Loader: True): https://glad.dav1d.de/
 
 * Visual Studio
-- Instalar Visual Studio con la opción "Desktop development with C++"
+- Install Visual Studio choosing the option "Desktop development with C++"
 
 * CMake
-- Instalar CMake
+- Install CMake
 
-* Crear Carpetas:
-- En un path a elección (ej: Documents) crear una carpeta llamada OpenGL. Dentro de esta crear dos carpetas /Include y /Libraries.
+* Creating Folders:
+- On a path (ej: Documents) create a folder /OpenGL. Inside this folder create two more folders /Include and /Libraries.
 
 * GLFW
-- Descomprimir .zip descargado (ver que no cree una carpeta que dentro tenga solo una carpeta del mismo nombre, si es asi tirar el contenido para afuera y borrar la carpeta extra)
-- Abrir CMAKE
-- En "Where is the source code:" elegir la carpeta descargada
-- En "Where to build the binaries:" usar el mismo path anterior agregando /build
-- Apretar Configure
-- Aceptar la creación de directorio
-- Elegir Visual Studio 15 2017 Win64
-- Apretar Finish
-- Esperar
-- Apretar Configure
-- Apretar Generate
-- Apretar Open Project
-- Cambiar en Visual Studio Debug por Release y ver que diga x64
-- Build -> Buil Solution
-- Esperar
-- Ir al path del .zip descomprimido
-- Copiar el archivo /build/src/glfw.lib en /Libraries
-- Copiar /include/GLFW en /Include
+- Decompress the downloaded .zip (make sure that the decompression don't create only a folder with the same name, if this is the case move all the content outside that folder and delete it)
+- Open CMAKE
+- On "Where is the source code:" choose the downloaded folder.
+- On "Where to build the binaries:" use the same path of the last step but adding /build
+- Click Configure
+- Confirm the directory creation
+- Choose Visual Studio 15 2017 Win64
+- Click Finish
+- Wait
+- Click Configure
+- Click Generate
+- Click Open Project
+- On Visual Studio change Debug for Release and confirm that the project builds for x64
+- Build -> Build Solution
+- Wait
+- Go to the decompressed .zip path
+- Copy the file /build/src/glfw.lib to /Libraries
+- Copy the folder /include/GLFW to /Include
 
 * GLAD
-- Descomprimir .zip descargado (ver que no cree una carpeta que dentro tenga solo una carpeta del mismo nombre, si es asi tirar el contenido para afuera y borrar la carpeta extra)
-- Copiar el contenido de /include a /Include
-- Reemplazar el archivo glad.c del proyecto (desde el path de este archivo es gput2/glad.c) por el archivo src/glad.c
+- Decompress the downloaded .zip (make sure that the decompression don't create only a folder with the same name, if this is the case move all the content outside that folder and delete it)
+- Copy the content of /include to /Include
+- Overwrite the glad.c project file (from this file path gput2/glad.c) with the src/glad.c file
 
 * GLM
-- Descomprimir .zip descargado (ver que no cree una carpeta que dentro tenga solo una carpeta del mismo nombre, si es asi tirar el contenido para afuera y borrar la carpeta extra)
-- Copiar la capeta glm/glm a /Include
+- Decompress the downloaded .zip (make sure that the decompression don't create only a folder with the same name, if this is the case move all the content outside that folder and delete it)
+- Copy the glm/glm folder to /Include
 
-* Linkear dependencias
-- Abrir el proyecto (desde el path de este archivo es gput2.sln)
+* Dependencies linking
+- Open the project (from this file path gput2.sln)
 - Project -> gput2 Properties...
-- Configuration Properties -> VC++ Directories -> Include Directories -> Dropdown de la derecha -> <Edit...> -> Símbolo de nueva carpeta -> Tres punto de la derecha -> Buscar la carpeta /Include -> Select Folder -> OK
-- Configuration Properties -> VC++ Directories -> Library Directories -> Dropdown de la derecha -> <Edit...> -> Símbolo de nueva carpeta -> Tres punto de la derecha -> Buscar la carpeta /Libraries -> Select Folder -> OK
-- Configuration Properties -> Linker -> Input -> Additional Dependencies-> Dropdown de la derecha -> <Edit...> -> Pegar
+- Configuration Properties -> VC++ Directories -> Include Directories -> Dropdown on the right -> <Edit...> -> New folder icon -> Three dots on the right -> Search /Include folder-> Select Folder -> OK
+- Configuration Properties -> VC++ Directories -> Library Directories -> Dropdown on the right -> <Edit...> -> New folder icon -> Three dots on the right -> Search /Libraries folder -> Select Folder -> OK
+- Configuration Properties -> Linker -> Input -> Additional Dependencies-> Dropdown on the right -> <Edit...> -> Paste
 
 opengl32.lib
 glfw3.lib
 
-en el primer cuadro de texto -> OK -> OK
+on the first text box -> OK -> OK
 
-* Ya con las dependencia agregadas solo queda eligir Release y x64 y ejecutar el proyecto
+* Now with the appropriate dependencies installed the only thing left to do is choose Release y x64 for the build and run the project
